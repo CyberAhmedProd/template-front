@@ -3,11 +3,6 @@ import { authGuard, loginGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full'
-  },
-  {
     path: 'login',
     canActivate: [loginGuard],
     loadComponent: () => import('./features/auth/login/login.component').then(m => m.LoginComponent)
@@ -17,6 +12,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () => import('./layout/main-layout/main-layout.component').then(m => m.MainLayoutComponent),
     children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
       {
         path: 'dashboard',
         loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent)
@@ -50,6 +50,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/dashboard'
+    redirectTo: '/login'
   }
 ];
