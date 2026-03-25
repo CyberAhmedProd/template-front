@@ -18,54 +18,8 @@ import { AuthService } from '../../core/services/auth.service';
     MatMenuModule,
     MatDividerModule
   ],
-  template: `
-    <div class="topbar-user">
-      <div style="text-align:right">
-        <div class="topbar-user-name">{{currentUser?.name || 'Utilisateur'}}</div>
-        <div class="topbar-user-role">Responsable Qualité</div>
-      </div>
-      <div class="topbar-user-av">{{getInitials()}}</div>
-    </div>
-  `,
-  styles: [`
-    .topbar-user {
-      display: flex; 
-      align-items: center; 
-      gap: 8px;
-      cursor: pointer; 
-      padding: 5px 10px; 
-      border-radius: var(--radius);
-      transition: background 0.1s;
-    }
-
-    .topbar-user:hover { 
-      background: rgba(255,255,255,0.1); 
-    }
-
-    .topbar-user-av {
-      width: 28px; 
-      height: 28px;
-      background: rgba(255,255,255,0.22);
-      border-radius: 50%;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      font-size: 11px; 
-      font-weight: 700; 
-      color: white;
-    }
-
-    .topbar-user-name { 
-      font-size: 12.5px; 
-      font-weight: 600; 
-      color: white; 
-    }
-
-    .topbar-user-role { 
-      font-size: 10.5px; 
-      color: rgba(255,255,255,0.65); 
-    }
-  `]
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   currentUser$ = this.authService.currentUser$;
